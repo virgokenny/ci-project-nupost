@@ -1,6 +1,18 @@
 <div class="container">
 	<div class="page-header">
-		<h1><?=$title?></h1>
+		<h1>
+			<span><?=$title?></span>
+			<div class="btn-group pull-right">
+				<a href="#" class="btn btn-default btn-lg">
+					<span class="glyphicon glyphicon-globe"></span>
+					<span>Site</span>
+				</a>
+				<a href="../app/download/<?=$title?>" class="btn btn-default btn-lg">
+					<span class="glyphicon glyphicon-download-alt"></span>
+					<span>PDF</span>
+				</a>
+			</div>
+		</h1>
 	</div>
 	<ul class="list-group">
 		<?php foreach ($doc_list as $doc): ?>

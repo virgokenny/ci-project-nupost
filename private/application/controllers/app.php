@@ -18,5 +18,13 @@ class App extends CI_Controller
 		write_file($temp_file, $this->input->post('rst'));
 		echo shell_exec('rst2html -r 5 '.$temp_file);
 	}
+
+	public function download($book)
+	{
+		$this->load->helper('file');
+		$this->load->helper('download');
+		$file_name = App::REPO_ROOT."${book}/_build/pdf/${book}.pdf";
+		force_download("${book}.pdf", read_file($file_name));
+	}
 }
 
