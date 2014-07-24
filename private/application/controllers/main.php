@@ -14,14 +14,24 @@ class Main extends CI_Controller
 		));
 	}
 
+	public function filterFile($var)
+	{
+		$findme = ".rst";
+		$result = strpos($var, $findme);
+		return $result !== false;
+	}
+
 	public function book($name)
 	{
 		$this->load->helper('file');
+		$file_list = get_filenames(Main::REPO_ROOT.$name);
+		$new_file_list = array_filter($file_list, array(__CLASS__,"filterFile"));
 		$this->load->view('layout/main', array(
 			'title' => $name,
 			'page' => 'book',
-			'doc_list' => get_filenames(Main::REPO_ROOT.$name)
+			'doc_list' => $new_file_list
 		));
+//                var_dump($new_file_list);
 	}
 
 	public function doc($book, $doc)
