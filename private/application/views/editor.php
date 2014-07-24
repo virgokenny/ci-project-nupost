@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Editor</title>
-</head>
-<body>
+<div class="container">
 	<form action="app/save" method="post">
-		<textarea name="document"></textarea>
-		<button type="submit">Save</button>
+		<div class="form-group">
+			<button class="btn btn-default" type="submit">Save</button>
+		</div>
+		<div class="form-group">
+			<textarea class="form-control" name="document" rows="25"></textarea>
+		</div>
 	</form>
-</body>
-</html>
+</div>
