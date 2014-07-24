@@ -2,6 +2,7 @@
 private/application/cache/*
 private/application/cache/!index.html
 private/application/logs/log-*.php
+private/repo/*
 
 /.htaccess
 /index.php
