@@ -6,7 +6,7 @@
 	<title><?=$title?> - NuPoST</title>
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	<style>
-		body {padding-top: 70px}
+		body {padding-top: 30px}
 	</style>
 </head>
 <body>

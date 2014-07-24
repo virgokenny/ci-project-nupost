@@ -23,5 +23,15 @@ class Main extends CI_Controller
 			'doc_list' => get_filenames(Main::REPO_ROOT.$name)
 		));
 	}
+
+	public function doc($book, $doc)
+	{
+		$this->load->helper('file');
+		$this->load->view('layout/main', array(
+			'title' => $doc,
+			'page' => 'editor',
+			'document' => read_file(Main::REPO_ROOT.$book.'/'.$doc)
+		));
+	}
 }
 

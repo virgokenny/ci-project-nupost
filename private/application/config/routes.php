@@ -40,6 +40,7 @@
 
 $route['default_controller'] = 'main';
 $route['(book/:any)'] = 'main/$1';
+$route['(doc/:any)'] = 'main/$1';
 $route['404_override'] = '';
 
 
