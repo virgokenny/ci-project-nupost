@@ -1,5 +1,5 @@
 <div class="container">
-	<form action="<?=base_url()?>app/save" method="post">
+	<form action="<?=base_url()?>app/save/<?=$book?>/<?=$title?>" method="post">
 		<div class="form-group">
 			<div class="page-header">
 				<h1>

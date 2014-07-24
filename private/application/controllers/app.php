@@ -2,17 +2,13 @@
 
 class App extends CI_Controller
 {
-	public function index()
-	{
-		$this->load->view('layout/main', array(
-			'title' => 'Editor',
-			'page' => 'editor'
-		));
-	}
+	const REPO_ROOT = 'private/repo/';
 
-	public function save()
+	public function save($book, $doc)
 	{
-		echo($this->input->post('document'));
+		$this->load->helper('file');
+		// $this->output->set_header('Access-Control-Allow-Origin: *');
+		write_file(App::REPO_ROOT."${book}/${doc}", $this->input->post('document'));
 	}
 }
 
