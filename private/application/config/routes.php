@@ -38,7 +38,8 @@
 |
 */
 
-$route['default_controller'] = "welcome";
+$route['default_controller'] = 'main';
+$route['(book/:any)'] = 'main/$1';
 $route['404_override'] = '';
 
 
