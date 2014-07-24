@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	<title><?=$title?> - NuPoST</title>
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<?php $this->load->view('layout/css_loader'); ?>
 	<style>
 		body {padding-top: 30px}
 	</style>
@@ -20,5 +21,6 @@
 	<?php $this->load->view($page) ?>
 	<script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<?php $this->load->view('layout/js_loader'); ?>
 </body>
 </html>

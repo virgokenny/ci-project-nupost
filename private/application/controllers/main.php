@@ -30,7 +30,9 @@ class Main extends CI_Controller
 		$this->load->view('layout/main', array(
 			'title' => $doc,
 			'page' => 'editor',
-			'document' => read_file(Main::REPO_ROOT.$book.'/'.$doc)
+			'document' => read_file(Main::REPO_ROOT.$book.'/'.$doc),
+			'css_list' => array('codemirror'),
+			'js_list' => array('codemirror', 'overlay', 'rst', 'editor')
 		));
 	}
 }
