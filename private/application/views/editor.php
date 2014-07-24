@@ -8,8 +8,13 @@
 				</h1>
 			</div>
 		</div>
-		<div class="form-group">
-			<textarea id="editor" class="form-control" name="document"><?=$document?></textarea>
+		<div class="row">
+			<div class="col-lg-6 form-group">
+				<textarea id="editor" class="form-control" name="document"><?=$document?></textarea>
+			</div>
+			<div id="preview" class="col-lg-6 form-group">
+				<span>preview</span>
+			</div>
 		</div>
 	</form>
 </div>
