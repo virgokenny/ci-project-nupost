@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
 	<form action="<?=base_url()?>app/save/<?=$book?>/<?=$title?>" method="post">
 		<div class="form-group">
 			<div class="page-header">
@@ -12,8 +12,12 @@
 			<div class="col-lg-6 form-group">
 				<textarea id="editor" class="form-control" name="document"><?=$document?></textarea>
 			</div>
-			<div id="preview" class="col-lg-6 form-group">
-				<span>preview</span>
+			<div class="col-lg-6">
+				<div class="panel panel-default">
+					<div id="preview" class="panel-body">
+						<span>previewing...</span>
+					</div>
+				</div>
 			</div>
 		</div>
 	</form>
