@@ -7,6 +7,10 @@
 					<span class="glyphicon glyphicon-globe"></span>
 					<span>Site</span>
 				</a>
+				<a href="../private/repo/<?=$title?>/_build/slides/" class="btn btn-default btn-lg">
+					<span class="glyphicon glyphicon-facetime-video"></span>
+					<span>Slide</span>
+				</a>
 				<a href="../app/download/<?=$title?>" class="btn btn-default btn-lg">
 					<span class="glyphicon glyphicon-download-alt"></span>
 					<span>PDF</span>
