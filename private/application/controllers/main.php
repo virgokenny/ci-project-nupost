@@ -10,7 +10,8 @@ class Main extends CI_Controller
 		$this->load->view('layout/main', array(
 			'title' => 'Browser',
 			'page' => 'browser',
-			'repo_list' => get_dir_file_info(Main::REPO_ROOT)
+			'repo_list' => get_dir_file_info(Main::REPO_ROOT),
+			'js_list' => array('import')
 		));
 	}
 
