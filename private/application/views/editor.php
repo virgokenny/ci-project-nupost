@@ -1,10 +1,13 @@
 <div class="container-fluid">
-	<form action="<?=base_url()?>app/save/<?=$book?>/<?=$title?>" method="post">
+	<form id="save-form" action="<?=base_url()?>app/save/<?=$book?>/<?=$title?>" method="post">
 		<div class="form-group">
 			<div class="page-header">
 				<h1>
 					<span><?=$title?></span>
-					<button class="btn btn-default pull-right" type="submit">Save</button>
+					<button class="btn btn-default btn-lg pull-right" type="submit">
+						<span id="saved" class="glyphicon glyphicon-saved" style="display:none;"></span>
+						<span>Save</span>
+					</button>
 				</h1>
 			</div>
 		</div>
