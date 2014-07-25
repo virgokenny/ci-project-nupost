@@ -300,3 +300,12 @@ div.CodeMirror-cursors {
     visibility: hidden;
   }
 }
+
+
+/////
+
+#preview img {
+  color: hsla(0, 0%, 0%, 0);
+  background-color: hsl(0, 0%, 90%);
+}
+
