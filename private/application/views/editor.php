@@ -12,10 +12,10 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-lg-6 form-group">
+			<div class="col-xs-6 form-group">
 				<textarea id="editor" class="form-control" name="document"><?=$document?></textarea>
 			</div>
-			<div class="col-lg-6">
+			<div class="col-xs-6">
 				<div class="panel panel-default">
 					<div id="preview" class="panel-body">
 						<span>previewing...</span>
