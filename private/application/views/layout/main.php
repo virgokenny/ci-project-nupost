@@ -16,10 +16,10 @@
 			<div class="navbar-header">
 				<a class="navbar-brand" href="<?=base_url()?>">NuPoST</a>
 			</div>
-			<button class="btn btn-default navbar-btn pull-right" onclick="javascript:window.location.port=80">
+			<a class="btn btn-default navbar-btn pull-right" href="//nupost.nuuo.com:80/">
 				<span>GitLab</span>
 				<span class="glyphicon glyphicon-arrow-right"></span>
-			</button>
+			</a>
 		</div>
 	</nav>
 	<?php $this->load->view($page) ?>
