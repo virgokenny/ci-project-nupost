@@ -15,7 +15,7 @@ RewriteRule ^(.*)$ index.php/$0 [L]
 
 # Treat these folders and files as they do not exist.
 
-RewriteCond $0 ^(\.git.*|private|(README|LICENSE)(\..+)?)(/.*)?$
+RewriteCond $0 ^(\.git.*|(README|LICENSE)(\..+)?)(/.*)?$
 RewriteRule ^(.*)$ index.php/$0 [L]
 
 </IfModule>

@@ -3,7 +3,7 @@
 		<h1>
 			<span><?=$title?></span>
 			<div class="btn-group pull-right">
-				<a href="#" class="btn btn-default btn-lg">
+				<a href="../private/repo/<?=$title?>/_build/html/" class="btn btn-default btn-lg">
 					<span class="glyphicon glyphicon-globe"></span>
 					<span>Site</span>
 				</a>
