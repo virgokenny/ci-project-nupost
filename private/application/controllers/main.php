@@ -39,7 +39,7 @@ class Main extends CI_Controller
 	{
 		$this->load->helper('file');
 		$this->load->view('layout/main', array(
-			'title' => $doc,
+			'title' => urldecode($doc),
 			'page' => 'editor',
 			'book' => $book,
 			'document' => read_file(Main::REPO_ROOT.$book.'/'.$doc),
