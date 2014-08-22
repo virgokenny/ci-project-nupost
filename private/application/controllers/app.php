@@ -34,7 +34,29 @@ class App extends CI_Controller
 		$this->load->helper('url');
 		$book_path = App::REPO_ROOT."${book}";
 		$file_path = "{$book_path}"."/".$this->input->post('input_text_field');
-		$output =  write_file($file_path, "");
+
+                $findme = ".rst";
+                $result = strpos($file_path, $findme);
+
+		var_dump($result);
+		if ($result)
+		{
+			write_file($file_path, "");
+		}
+		redirect(App::BOOK_URL."${book}");
+	}
+
+	public function deletefile($book)
+	{
+		$this->load->helper('file');
+		$this->load->helper('url');		
+		$file_list = $this->input->post('file_list');
+		$book_path = App::REPO_ROOT."${book}";
+
+		foreach ($file_list as $file_name):
+			$file_path = "{$book_path}"."/"."${file_name}";
+		unlink($file_path);
+		endforeach;
 		redirect(App::BOOK_URL."${book}");
 	}
 }

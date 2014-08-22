@@ -33,12 +33,21 @@
 			</div><!-- /.col-lg-6 -->
 		</div><!-- /.row -->
 	</form>
-	<ul class="list-group">
-		<?php foreach ($doc_list as $doc): ?>
-		<li class="list-group-item">
-		<span class="glyphicon glyphicon-file"></span>
-		<a href="../doc/<?=$title?>/<?=$doc?>"><?=$doc?></a>
-		</li>
-		<?php endforeach; ?>
-	</ul>
+	<form id="deletefile-form" action="<?=base_url()?>app/deletefile/<?=$title?>" method="post">
+		<ul class="list-group">
+			<button class="btn btn-default" type="submit">
+				<span class="glyphicon glyphicon-trash"></span>
+				<span>Delete Files</span>
+			</button>			
+			<?php foreach ($doc_list as $doc): ?>
+			<li class="list-group-item">
+			<div class="input-group">
+			<input type="checkbox" name="file_list[]" value=<?=$doc?>>
+				<span class="glyphicon glyphicon-file"></span>
+				<a href="../doc/<?=$title?>/<?=$doc?>"><?=$doc?></a>
+			</div><!-- /input-group -->
+			</li>
+			<?php endforeach; ?>
+		</ul>
+	</form>
 </div>
