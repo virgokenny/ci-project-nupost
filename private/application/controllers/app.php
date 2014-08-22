@@ -3,6 +3,7 @@
 class App extends CI_Controller
 {
 	const REPO_ROOT = 'private/repo/';
+	const BOOK_URL = 'book/';
 
 	public function save($book, $doc)
 	{
@@ -25,6 +26,16 @@ class App extends CI_Controller
 		$this->load->helper('download');
 		$file_name = App::REPO_ROOT."${book}/_build/pdf/${book}.pdf";
 		force_download("${book}.pdf", read_file($file_name));
+	}
+
+	public function newfile($book)
+	{
+		$this->load->helper('file');
+		$this->load->helper('url');
+		$book_path = App::REPO_ROOT."${book}";
+		$file_path = "{$book_path}"."/".$this->input->post('input_text_field');
+		$output =  write_file($file_path, "");
+		redirect(App::BOOK_URL."${book}");
 	}
 }
 
