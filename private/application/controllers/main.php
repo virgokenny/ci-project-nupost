@@ -36,7 +36,8 @@ class Main extends CI_Controller
 
 		foreach ($git_status as $status_flag)
 		{
-			if (strpos($status_str, $status_flag))
+			$pos = strpos($status_str, $status_flag);
+			if ( $pos !== false && $pos < 3)
 			{
 				$ret = $status_flag;
 				break;
