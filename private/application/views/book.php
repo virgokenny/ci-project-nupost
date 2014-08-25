@@ -42,9 +42,10 @@
 			<?php foreach ($doc_list as $doc): ?>
 			<li class="list-group-item">
 			<div class="input-group">
-			<input type="checkbox" name="file_list[]" value=<?=$doc?>>
-				<span class="glyphicon glyphicon-file"></span>
-				<a href="../doc/<?=$title?>/<?=$doc?>"><?=$doc?></a>
+			<span class="col-xs-2 text-danger"><strong><?=$doc['status']?></strong></span>
+			<span class="col-xs-2"><input type="checkbox" name="file_list[]" value=<?=$doc['name']?>></span>
+			<span class="glyphicon glyphicon-file"></span>
+			<a href="../doc/<?=$title?>/<?=$doc['name']?>"><?=$doc['name']?></a>
 			</div><!-- /input-group -->
 			</li>
 			<?php endforeach; ?>

@@ -22,17 +22,51 @@ class Main extends CI_Controller
 		return $result !== false;
 	}
 
+	public function gitstatus($file_name, $book)
+	{
+		$book_dir = Main::REPO_ROOT.$book;
+		$result_str = shell_exec('cd '.$book_dir.';git status -s '.$file_name);
+		return Main::status($result_str);
+	}
+
+        public function filestatus($output_status, $file_name)
+        {
+		$start_str = strpos($output_status, $file_name);
+
+		if ($start_str !== false)
+		{
+			return substr($output_status, $start_str-3, 3);
+		}
+		else
+		{
+			return '';
+		}
+        }
+
 	public function book($name)
 	{
 		$this->load->helper('file');
 		$file_list = get_filenames(Main::REPO_ROOT.$name);
 		$new_file_list = array_filter($file_list, array(__CLASS__,"filterFile"));
+
+		$file_list_status = array();
+
+		$output_status = shell_exec('cd '.Main::REPO_ROOT.$name.';git status -s ');
+
+		foreach($new_file_list as $file_name) {
+			$file_status = array (
+				'name' => $file_name,
+				'status' => /*Main::gitstatus($file_name, $name)*/ Main::filestatus($output_status, $file_name)
+			);
+
+			array_push($file_list_status, $file_status);
+		}	
+
 		$this->load->view('layout/main', array(
 			'title' => $name,
 			'page' => 'book',
-			'doc_list' => $new_file_list
+			'doc_list' => /*$new_file_list*/$file_list_status
 		));
-//                var_dump($new_file_list);
 	}
 
 	public function doc($book, $doc)

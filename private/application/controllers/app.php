@@ -55,7 +55,7 @@ class App extends CI_Controller
 
 		foreach ($file_list as $file_name):
 			$file_path = "{$book_path}"."/"."${file_name}";
-		unlink($file_path);
+			unlink($file_path);
 		endforeach;
 		redirect(App::BOOK_URL."${book}");
 	}
