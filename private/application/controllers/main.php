@@ -29,19 +29,37 @@ class Main extends CI_Controller
 		return Main::status($result_str);
 	}
 
-        public function filestatus($output_status, $file_name)
-        {
-		$start_str = strpos($output_status, $file_name);
+	public function checkstatus($status_str)
+	{
+		$git_status = array('M', 'A', 'D', '??');
+		$ret = '';
 
-		if ($start_str !== false)
+		foreach ($git_status as $status_flag)
 		{
-			return substr($output_status, $start_str-3, 3);
+			if (strpos($status_str, $status_flag))
+			{
+				$ret = $status_flag;
+				break;
+			}
+		}
+
+		return $ret;
+	}
+
+	private function getstatus($file_name, $book)
+	{
+		$book_dir = Main::REPO_ROOT.$book;
+		$output_status = shell_exec('cd '.$book_dir.';git status -s '.$file_name);
+
+		if ($output_status)
+		{
+			return  Main::checkstatus($output_status);
 		}
 		else
 		{
 			return '';
 		}
-        }
+	}
 
 	public function book($name)
 	{
@@ -51,12 +69,10 @@ class Main extends CI_Controller
 
 		$file_list_status = array();
 
-		$output_status = shell_exec('cd '.Main::REPO_ROOT.$name.';git status -s ');
-
 		foreach($new_file_list as $file_name) {
 			$file_status = array (
 				'name' => $file_name,
-				'status' => /*Main::gitstatus($file_name, $name)*/ Main::filestatus($output_status, $file_name)
+				'status' => Main::getstatus($file_name, $name)
 			);
 
 			array_push($file_list_status, $file_status);
@@ -82,4 +98,3 @@ class Main extends CI_Controller
 		));
 	}
 }
-
