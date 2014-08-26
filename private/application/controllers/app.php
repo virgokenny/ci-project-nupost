@@ -5,10 +5,12 @@ class App extends CI_Controller
 	const REPO_ROOT = 'private/repo/';
 	const BOOK_URL = 'book/';
 
-	public function save($book, $doc)
+	public function save($book, $docurl)
 	{
 		$this->load->helper('file');
 		// $this->output->set_header('Access-Control-Allow-Origin: *');
+		$doc = urldecode($docurl);
+		var_dump(App::REPO_ROOT."${book}/${doc}");
 		write_file(App::REPO_ROOT."${book}/${doc}", $this->input->post('document'));
 	}
 

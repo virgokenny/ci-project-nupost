@@ -4,6 +4,8 @@ class Main extends CI_Controller
 {
 	const REPO_ROOT = 'private/repo/';
 
+	protected $g_directory_list = array();
+
 	public function index()
 	{
 		$this->load->helper('file');
@@ -62,13 +64,43 @@ class Main extends CI_Controller
 		}
 	}
 
+	private function print_dir($in, $path, $book)
+	{
+		foreach ($in as $k => $v)
+		{
+			if (!is_array($v)) {
+//				echo "[file]: ",$path,$v,"\n";
+				if (strpos($v, '.rst') !== false)
+				{	
+					array_push($this->g_directory_list, array(
+						'name' => $path.$v,
+						'status' => Main::getstatus($path.$v, $book)
+					));
+				}
+			}
+			else {
+//				echo "[directory]: ",$path,$k,"\n",Main::print_dir($v,$path.$k.DIRECTORY_SEPARATOR, $book);
+				Main::print_dir($v,$path.$k.DIRECTORY_SEPARATOR, $book);
+
+			}
+		}
+	}
+
 	public function book($name)
 	{
 		$this->load->helper('file');
+		$this->load->helper('directory');
+
 		$file_list = get_filenames(Main::REPO_ROOT.$name);
 		$new_file_list = array_filter($file_list, array(__CLASS__,"filterFile"));
 
 		$file_list_status = array();
+
+		$directory_list = directory_map(Main::REPO_ROOT.$name);
+
+		Main::print_dir($directory_list, '', $name);
+
+/*		var_dump($this->g_directory_list);
 
 		foreach($new_file_list as $file_name) {
 			$file_status = array (
@@ -78,19 +110,20 @@ class Main extends CI_Controller
 
 			array_push($file_list_status, $file_status);
 		}	
-
+ */
 		$this->load->view('layout/main', array(
 			'title' => $name,
 			'page' => 'book',
-			'doc_list' => /*$new_file_list*/$file_list_status
+			'doc_list' => /*$new_file_list*/ /*$file_list_status*/ $this->g_directory_list
 		));
 	}
 
-	public function doc($book, $doc)
+	public function doc($book, $docurl)
 	{
 		$this->load->helper('file');
+		$doc = urldecode($docurl);
 		$this->load->view('layout/main', array(
-			'title' => urldecode($doc),
+			'title' => $doc,
 			'page' => 'editor',
 			'book' => $book,
 			'document' => read_file(Main::REPO_ROOT.$book.'/'.$doc),

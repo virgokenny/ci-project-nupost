@@ -45,7 +45,7 @@
 			<span class="col-md-1 text-danger"><strong><?=$doc['status']?></strong></span>
 			<span class="col-md-1"><input type="checkbox" name="file_list[]" value=<?=$doc['name']?>></span>
 			<span class="col-md-1 glyphicon glyphicon-file"></span>
-			<a href="../doc/<?=$title?>/<?=$doc['name']?>"><?=$doc['name']?></a>
+			<a href="../doc/<?=$title?>/<?=urlencode($doc['name'])?>"><?=$doc['name']?></a>
 			</div><!-- /input-group -->
 			</li>
 			<?php endforeach; ?>
