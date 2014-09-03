@@ -100,6 +100,8 @@ class Main extends CI_Controller
 
 		Main::print_dir($directory_list, '', $name);
 
+		$git_status_log = shell_exec('cd '.Main::REPO_ROOT.$name.'; git status');
+
 /*		var_dump($this->g_directory_list);
 
 		foreach($new_file_list as $file_name) {
@@ -114,7 +116,8 @@ class Main extends CI_Controller
 		$this->load->view('layout/main', array(
 			'title' => $name,
 			'page' => 'book',
-			'doc_list' => /*$new_file_list*/ /*$file_list_status*/ $this->g_directory_list
+			'doc_list' => /*$new_file_list*/ /*$file_list_status*/ $this->g_directory_list,
+			'git_status' => $git_status_log
 		));
 	}
 

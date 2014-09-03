@@ -42,13 +42,18 @@
 			<?php foreach ($doc_list as $doc): ?>
 			<li class="list-group-item">
 			<div class="input-group">
-			<span class="col-md-1 text-danger"><strong><?=$doc['status']?></strong></span>
-			<span class="col-md-1"><input type="checkbox" name="file_list[]" value=<?=$doc['name']?>></span>
-			<span class="col-md-1 glyphicon glyphicon-file"></span>
-			<a href="../doc/<?=$title?>/<?=urlencode($doc['name'])?>"><?=$doc['name']?></a>
+				<span class="col-md-1 text-danger"><strong><?=$doc['status']?></strong></span>
+				<span class="col-md-1"><input type="checkbox" name="file_list[]" value=<?=$doc['name']?>></span>
+				<span class="col-md-1 glyphicon glyphicon-file"></span>
+				<a href="../doc/<?=$title?>/<?=urlencode($doc['name'])?>"><?=$doc['name']?></a>
 			</div><!-- /input-group -->
 			</li>
 			<?php endforeach; ?>
 		</ul>
 	</form>
+	<div class="row">
+		<div class="col-xs-6">
+			<pre><?=$git_status?></pre>
+		</div>
+	</div>	
 </div>

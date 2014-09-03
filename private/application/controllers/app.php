@@ -22,6 +22,13 @@ class App extends CI_Controller
 		echo shell_exec('rst2html -r 5 '.$temp_file);
 	}
 
+	public function git_stage_area($book)
+	{
+                $this->load->helper('file');
+		$dir = App::REPO_ROOT."${book}";
+                echo shell_exec('cd '.$dir.'; git status');	
+	}
+
 	public function download($book)
 	{
 		$this->load->helper('file');
