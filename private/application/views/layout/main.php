@@ -16,7 +16,7 @@
 			<div class="navbar-header">
 				<a class="navbar-brand" href="<?=base_url()?>">NuPoST</a>
 			</div>
-			<a class="btn btn-default navbar-btn pull-right" href="//nupost.nuuo.com:80/">
+			<a class="btn btn-default navbar-btn pull-right" href="//gitlab.nuuo.com:80/">
 				<span>GitLab</span>
 				<span class="glyphicon glyphicon-arrow-right"></span>
 			</a>
