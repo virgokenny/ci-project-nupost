@@ -24,9 +24,9 @@ class App extends CI_Controller
 
 	public function git_stage_area($book)
 	{
-                $this->load->helper('file');
+		$this->load->helper('file');
 		$dir = App::REPO_ROOT."${book}";
-                echo shell_exec('cd '.$dir.'; git status');	
+		echo shell_exec('cd '.$dir.'; git status');
 	}
 
 	public function download($book)
@@ -44,8 +44,15 @@ class App extends CI_Controller
 		$book_path = App::REPO_ROOT."${book}";
 		$file_path = "{$book_path}"."/".$this->input->post('input_text_field');
 
-                $findme = ".rst";
-                $result = strpos($file_path, $findme);
+		$findme = ".rst";
+		$result = strpos($file_path, $findme);
+
+		$path_parts = pathinfo($file_path);
+
+		if (!is_dir($path_parts['dirname']))
+		{
+			mkdir($path_parts['dirname']);
+		}
 
 		var_dump($result);
 		if ($result)
@@ -58,7 +65,7 @@ class App extends CI_Controller
 	public function deletefile($book)
 	{
 		$this->load->helper('file');
-		$this->load->helper('url');		
+		$this->load->helper('url');
 		$file_list = $this->input->post('file_list');
 		$book_path = App::REPO_ROOT."${book}";
 
